@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<head>
+    <style type="text/css">
+    .modal {
+        display: block; 
+        position: fixed; 
+        z-index: 1; 
+        padding-top: 100px;
+        padding-bottom:100px; 
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+        max-height: 80%;
+        overflow-y: auto;
+    }
+    .modal-content {
+        background-image: linear-gradient(90deg, #ecafb0, #dd9090);
+        margin: auto;
+        padding: 1px;
+        border: 1px solid #888;
+        width: 70%;
+        border: 1px;
+        border-radius:10px;
+    }
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .wrapper {
+        max-width: 75%;
+        margin: auto;
+    }
+    h1 { 
+        color: #555; 
+        margin: 3rem 0 1rem 0; 
+        padding: 0;
+        font-size: 1.5rem;
+    }
+    textarea {
+        width: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        min-height: 100px;
+        resize: none;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+        color: #666;
+        box-shadow: inset 0 0 0.25rem #ddd;
+    }
+    .button
+    {
+        display: inline-block;
+        vertical-align: top;
+        padding: 10px 25px;
+        font-family: inherit;
+        cursor: pointer;
+        font-size: 15px;
+        text-align: center;
+        text-decoration: none;
+        background-clip: padding-box;
+        border: 1px solid;
+        border-radius: 2px;
+        -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.09), 0 1px 1px rgba(0, 0, 0, 0.3);
+        box-shadow: inset 0 1px rgba(255, 255, 255, 0.09), 0px 1px 1px rgba(0, 0, 0, 0.2);
+        color: white;
+        text-shadow: 0 0 2px rgba(0, 0, 0, .7);
+        background-color: #303030;
+        border-color: #1c1c1c #202020 #222;
+        background-image: -webkit-linear-gradient(top, #A76869, #c08a8a);
+        background-image: -moz-linear-gradient(top, #A76869, #c08a8a);
+        background-image: -o-linear-gradient(top, #A76869, #c08a8a);
+        background-image: linear-gradient(to bottom, #A76869, #c08a8a);
+        border-radius:100em!important;
+        display:block;
+        margin:auto;
+        margin:auto;
+    }
+    .button:hover {
+        background-color: #313131;
+        background-image: -webkit-linear-gradient(top, #ca9d9d, #ca9d9d);
+        background-image: -moz-linear-gradient(top, #ca9d9d, #ca9d9d);
+        background-image: -o-linear-gradient(top, #ca9d9d, #ca9d9d);
+        background-image: linear-gradient(to bottom, #ca9d9d, #ca9d9d);
+    }
+    </style>
+
+
+
+<script type="text/x-template" id="modal-template">
+    <div id="myModal" class="modal">
+
+        <div class="wrapper">
+            <div class="modal-content">
+                <span class="close" v-on:click="app.showModal=false">&times;</span>
+
+                <h1 style="text-align:center;">Question 1?</h1>
+
+                <textarea v-model="app.input1" maxlength="300" placeholder="Type your answer here..."autofocus></textarea>
+
+                <h1 style="text-align:center;">Question 2?</h1>
+
+                <textarea v-model="app.input2" maxlength="300" placeholder="Type your answer here..."autofocus></textarea>
+
+                <h1 style="text-align:center;">Question 3?</h1>
+
+                <textarea v-model="app.input3" maxlength="300" placeholder="Type your answer here..."autofocus></textarea>
+
+                <h1 style="text-align:center;">Question 4?</h1>
+
+                <textarea v-model="app.input4" maxlength="300" placeholder="Type your answer here..."autofocus></textarea>
+
+                <br><br><br>
+
+                <input type="button"  v-on:click="app.showModal=false;app.sendData()" class = "button" id ="calculate" value = "Submit">
+                <br><br><br>
+        </div>
+    </div>
+  
+  </div>
+</script>
+
+</head>
+
+<body>
+
+
+    <div id="app">
+       
+        <button class="button" v-on:click="showModal=true">Questionaire</button>
+        <modal v-if="showModal==true">
+        </modal>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+        Vue.component("modal", {
+            template: "#modal-template"
+        });
+        var app = new Vue({
+            el: '#app',
+            data: {
+            showModal: false,
+            input1:'',
+            input2:'',
+            input3:'',
+            input4:''
+        },
+            methods: {
+                sendData: function(){
+                    
+                }
+        }
+    })
+    </script>
+
+</body>
+</html>
